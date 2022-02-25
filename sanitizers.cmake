@@ -29,7 +29,13 @@ add_compile_options(
 link_libraries(
     -fsanitize=address
     -fsanitize=leak
+
     -fsanitize=undefined
+    # known bug...
+    # "absl/numeric/int128_have_intrinsic.inc:245: undefined reference to `__muloti4'"
+    # https://bugs.llvm.org/show_bug.cgi?id=16404
+    # https://github.com/android/ndk/issues/295
+    --rtlib=compiler-rt
 )
 
 endif(USE_ADDRESS_SANITIZER)
