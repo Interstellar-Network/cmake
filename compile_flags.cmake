@@ -13,5 +13,6 @@ add_compile_options(
     -fstack-protector-strong
 
     # without this when debugging we can not see the stack values
-    $<$<CONFIG:Debug>:-fno-limit-debug-info>
+    # GCC does not understand this flag
+    $<$<CXX_COMPILER_ID:Clang>:$<$<CONFIG:Debug>:-fno-limit-debug-info>>
 )
