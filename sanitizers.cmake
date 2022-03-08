@@ -39,3 +39,15 @@ link_libraries(
 )
 
 endif(USE_ADDRESS_SANITIZER)
+
+if(USE_THREAD_SANITIZER)
+
+add_compile_options(
+    -fsanitize=thread
+)
+
+link_libraries(
+    -fsanitize=thread
+)
+
+endif(USE_THREAD_SANITIZER)
