@@ -1,4 +1,4 @@
-################################################################################
+# ##############################################################################
 # NOTE: apparently include(and add_subdirectory/FetchContent) vs
 # add_compile_options order does NOT matter b/c CMake will "include+configure"
 # THEN compile.
@@ -6,7 +6,10 @@
 # they were added
 
 add_compile_options(
-    -march=native
+
+    # DO NOT use march=native by default
+    # https://github.com/Interstellar-Network/roadmap/issues/49
+    -march=x86-64 -mavx -mavx2 -maes
 
     -Wall -Wextra -Werror
 
